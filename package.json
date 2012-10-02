@@ -14,20 +14,44 @@
         "form-data":"~0.0.3",
         "mime":"~1.2.7"
     },
+    "main":"phantom-proxy.js",
     "devDependencies":{
         "should":"~1.2.0",
         "mocha":"~1.5.0"
     },
+    "bugs":{
+        "mail":"rob.schieber@gmail.com",
+        "url":" https://github.com/sheebz/phantom-proxy/issues"
+    },
+    "licenses":
+            [
+                {
+                    "type":"MIT",
+                    "url":"https://github.com/sheebz/phantom-proxy/blob/master/README.md"
+                }
+            ],
+    "keywords":
+            [
+                "phantom",
+                "phantomjs",
+                "phantom-node",
+                "node-phantom",
+                "feature",
+                "test",
+                "headless",
+                "webkit"
+            ],
     "engines":{
         "node":">0.6.0"
     },
+    "directories":{
+        "test":"./test",
+        "lib":"./lib"
+    },
     "name":"phantom-proxy",
     "private":false,
-    "version":"0.0.1",
-    "contributors":
-            [
-
-            ],
+    "version":"0.0.2",
+    "description":"A set of proxy objects for driving  phantomjs from node",
     "repository":{
         "type":"git",
         "url":"https://github.com/sheebz/phantom-proxy"

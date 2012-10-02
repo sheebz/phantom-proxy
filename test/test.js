@@ -3,6 +3,7 @@ var should = require("should"),
     phantomProxy = require('../phantom-proxy'),
     colors = require('colors');
 
+phantomProxy = require('../phantom-proxy');
 phantomProxy.createProxy({}, function (proxy) {
     proxy.page.onConsoleMessage = function (event) {
         console.log(JSON.stringify(event).grey);
