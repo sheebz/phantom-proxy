@@ -1,7 +1,7 @@
-var request = require('./lib/request'),
+var request = require('./lib/request/main'),
     _ = require('underscore'),
     Q = require('q'),
-    qs = require('querystring')
+    qs = require('querystring');
 
 var phantomProxy = _.extend({}, {
     createProxy:function (options, callbackFn) {
@@ -33,7 +33,7 @@ var phantomProxy = _.extend({}, {
                 [
                     'lib/phantomServer.js'
                 ], {
-                    detached:false,
+                    detached:true,
                     stdio:
                         [
                             'pipe',
@@ -46,7 +46,6 @@ var phantomProxy = _.extend({}, {
         this.phantomjsProc.stdout.on('data', function (data) {
 
             var msg = data.toString();
-            console.log(msg);
             try {
                 var event = JSON.parse(msg);
                 self.page && self.page[event.source] && self.page[event.source].call(self.page, event);
@@ -101,38 +100,12 @@ var phantomInterface = _.extend({}, {
 });
 
 var webpageInterface = {
-    destroy:function () {
-
-    },
-    createServer:function (port, callbackFn) {
-        port = port || 1061;
-        console.log('creating server');
-        var spawn = require('child_process').spawn,
-            phantomjs = spawn('phantomjs',
-                [
-                    'phantomServer.js'
-                ]);
-
-        phantomjs.stdout.on('data', function (data) {
-            if (data == 1) {
-                callbackFn();
-            }
-        });
-
-        phantomjs.stderr.on('data', function (data) {
-            console.log('stderr: ' + data);
-        });
-
-        phantomjs.on('exit', function (code) {
-            console.log('child process exited with code ' + code);
-        });
-    },
 
 //properties
     set:function (property, value, callbackFn) {
         request.post('http://localhost:1061/page/properties/set', {form:{propertyName:property, propertyValue:JSON.stringify(value)}},
             function (error, response, body) {
-                callbackFn.call(this);
+                callbackFn && callbackFn.call(this, body);
             });
     },
     open:function (url, callbackFn) {
@@ -143,7 +116,7 @@ var webpageInterface = {
                 ], null, 4)}},
             function (error, response, body) {
                 deferred.resolve(body);
-                callbackFn && callbackFn();
+                callbackFn && callbackFn.call(this, body);
             }
         );
         return deferred.promise;
@@ -154,7 +127,7 @@ var webpageInterface = {
                 form:{expressionFn:expressionFn.toString(), arguments:JSON.stringify(Array.prototype.slice.call(arguments, 2, arguments.length), null, 4)}
             },
             function (error, response, body) {
-                callbackFn(body);
+                callbackFn && callbackFn.call(this, body);
             });
     },
     render:function (filename, callbackFn) {

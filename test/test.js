@@ -4,8 +4,11 @@ var should = require("should"),
     colors = require('colors');
 
 phantomProxy.createProxy({}, function (proxy) {
-    proxy.page.open('http://localhost:8007/#login/index', function () {
-        proxy.page.waitForSelector('.active-page', function () {
+    proxy.page.onConsoleMessage = function (event) {
+        console.log(JSON.stringify(event).grey);
+    };
+    proxy.page.open('http://www.google.com', function () {
+        proxy.page.waitForSelector('body', function () {
             console.log('done');
             proxy.page.render('./scratch/loginTest.png', function () {
                 proxy.phantom.exit(function () {
