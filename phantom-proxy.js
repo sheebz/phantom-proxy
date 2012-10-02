@@ -28,10 +28,12 @@ var phantomProxy = _.extend({}, {
             fs = require('fs'),
             spawn = require('child_process').spawn;
 
+        var serverPath = __dirname + '/' + require('path').normalize('./lib/phantomServer.js');
+
         this.phantomjsProc =
             spawn('phantomjs',
                 [
-                    'lib/phantomServer.js'
+                    serverPath
                 ], {
                     detached:true,
                     stdio:
@@ -166,6 +168,5 @@ var webpageInterface = {
         }, selector);
     }
 };
-
 
 module.exports = phantomProxy;
