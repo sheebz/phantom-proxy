@@ -16,7 +16,7 @@ Phantom-proxy takes a different approach to communicating with phantom than thes
 phantomProxy = require('phantom-proxy');
 phantomProxy.createProxy({}, function (proxy) {
     proxy.page.onConsoleMessage = function (event) {
-        console.log(JSON.stringify(event).grey);
+        console.log(JSON.stringify(event));
     };
     proxy.page.open('http://www.google.com', function () {
         proxy.page.waitForSelector('body', function () {
