@@ -35,6 +35,6 @@ Phantom-proxy takes a different approach to communicating with phantom than thes
 
     });
 
-});`
+});
 
 
