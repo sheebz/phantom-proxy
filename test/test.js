@@ -6,8 +6,9 @@ var should = require("should"),
 phantomProxy.createProxy({}, function (proxy) {
     proxy.page.open('http://localhost:8007/#login/index', function () {
         proxy.page.waitForSelector('.active-page', function () {
-            proxy.page.render('loginTest.png', function(){
-                proxy.phantom.exit(0, function(){
+            console.log('done');
+            proxy.page.render('./scratch/loginTest.png', function () {
+                proxy.phantom.exit(function () {
                     console.log('done'.green.bold);
                 });
             });

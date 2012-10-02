@@ -1,6 +1,7 @@
-var request = require('request'),
+var request = require('./lib/request'),
     _ = require('underscore'),
-    Q = require('Q');
+    Q = require('q'),
+    qs = require('querystring')
 
 var phantomProxy = _.extend({}, {
     createProxy:function (options, callbackFn) {
@@ -25,16 +26,14 @@ var phantomProxy = _.extend({}, {
             self = this,
             starting = true,
             fs = require('fs'),
-            spawn = require('child_process').spawn,
-            out = fs.openSync('./out.log', 'a'),
-            err = fs.openSync('./out.log', 'a');
+            spawn = require('child_process').spawn;
 
         this.phantomjsProc =
             spawn('phantomjs',
                 [
-                    'phantomServer.js'
+                    'lib/phantomServer.js'
                 ], {
-                    detached:true,
+                    detached:false,
                     stdio:
                         [
                             'pipe',
@@ -55,15 +54,6 @@ var phantomProxy = _.extend({}, {
             catch (error) {
                 console.error(error);
             }
-//            //eventEmitter.emit('dataReceived', data.toString());
-//            try {
-//
-//                console.log(msg);
-//                var event = JSON.parse(msg);
-//                self.page && self.page[event.source] && self.page[event.source].call(self.page, event);
-//            } catch (error) {
-//                console.log(error);
-//            }
 
             if (starting) {
                 if (msg == 0) {
@@ -77,48 +67,6 @@ var phantomProxy = _.extend({}, {
             }
 
         });
-//        var starting = true;
-//        port = port || 1061;
-//        var cp = require('child_process'),
-//            phantomjsProc = cp.spawn('phantomjs',
-//                [
-//                    'phantomServer.js'
-//                ]);
-//
-//        this.phantomjsProc = phantomjsProc;
-//
-//        var pingService = function (callbackFn) {
-//            console.log('pinging...');
-//            request.get('http://locahost:1061/ping', function (error, response, body) {
-//                console.log(JSON.stringify(response));
-//                callbackFn();
-//            });
-//        };
-//
-//        phantomjsProc.stdout.on('data', function (data) {
-//            var msg = data.toString();
-//            console.log('** ' + data.toString() + '**');
-//
-//            if (starting) {
-//                if (msg == 0) {
-//                    starting = false;
-//                    callbackFn();
-//                }
-//                else {
-//                    phantomjsProc.kill();
-//                    throw new Error('unable to start server');
-//                }
-//            }
-//
-//        });
-//
-//        phantomjsProc.stderr.on('data', function (data) {
-//            console.log('stderr: ' + data.toString());
-//        });
-//
-//        phantomjsProc.on('exit', function (code) {
-//            console.log('child process exited with code ' + code);
-//        });
     }
 });
 
@@ -245,5 +193,6 @@ var webpageInterface = {
         }, selector);
     }
 };
+
 
 module.exports = phantomProxy;
