@@ -11,30 +11,23 @@ Phantom-proxy takes a different approach to communicating with phantom than thes
 `npm install phantom-proxy` 
 
 ##usage
-`phantomProxy.createProxy({}, function (proxy) {
+
+```javascript
+phantomProxy = require('../phantom-proxy');
+phantomProxy.createProxy({}, function (proxy) {
     proxy.page.onConsoleMessage = function (event) {
         console.log(JSON.stringify(event).grey);
     };
     proxy.page.open('http://www.google.com', function () {
-
         proxy.page.waitForSelector('body', function () {
-
             console.log('done');
-
             proxy.page.render('./scratch/loginTest.png', function () {
-
                 proxy.phantom.exit(function () {
-
                     console.log('done'.green.bold);
-
                 });
-
             });
-
         });
-
     });
-
 });
-
+```
 
