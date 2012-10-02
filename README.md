@@ -20,10 +20,9 @@ phantomProxy.createProxy({}, function (proxy) {
     };
     proxy.page.open('http://www.google.com', function () {
         proxy.page.waitForSelector('body', function () {
-            console.log('done');
             proxy.page.render('./scratch/loginTest.png', function () {
                 proxy.phantom.exit(function () {
-                    console.log('done'.green.bold);
+                    console.log('test complete');
                 });
             });
         });
