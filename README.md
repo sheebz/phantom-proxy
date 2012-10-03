@@ -54,6 +54,13 @@ require('phantom-proxy').createProxy({}, function(proxy){
 });
 ```
 
+##### evaluate(functionToEvaluate, callbackFn, [arg1, arg2,... argN]
+Executes functionToEvaluate in phantomJS browser.  Once function executes, callbackFn will be invoked with a result parameter. The Third and sebsequent arguments represent optional parameters which will be passed to the functionToEvaluate function when it is invoked in the browser.
+
+
+
+
+
 ```javascript
 phantomProxy = require('phantom-proxy');
 phantomProxy.createProxy({}, function (proxy) {
