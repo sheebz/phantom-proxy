@@ -4,13 +4,11 @@ Provides a proxy interface for phantomjs which runs inside of node.  Now you can
 ## Overview
 PhantomJs is an incredibly useful tool for functional and unit testing.  Problem is that it runs in its own process which is outside of node, so you are basically out of luck if you want to integrate with phantomjs from within node.  There are some other libraries - phantom-node, node-phantom, that address the same problem.  
 
-## Why do we need another nodejs runtime for phantom?
-Phantom-proxy takes a different approach to communicating with phantom than these modules.  Phantom-node passes messages using alerts and express.  While this was an ingenious solution to a difficult problem at the time, better solutions are now available.  As of version 1.4, phantomjs provides an embedded webserver called mongoose which can be used to pass messages.  Phantom-proxy leverages this, which is the fastst and most reliable approach.
 
-##Instalation
+## Installation
 `npm install phantom-proxy` 
 
-##usage
+## Usage
 
 ```javascript
 phantomProxy = require('phantom-proxy');
@@ -29,4 +27,9 @@ phantomProxy.createProxy({}, function (proxy) {
     });
 });
 ```
+## FAQ
+### Why do we need another nodejs runtime for phantom?
+Phantom-proxy takes a different approach to communicating with phantom than these modules.  Phantom-node passes messages using alerts and express.  While this was an ingenious solution to a difficult problem at the time, better solutions are now available.  As of version 1.4, phantomjs provides an embedded webserver called mongoose which can be used to pass messages.  Phantom-proxy leverages this, which is the fastst and most reliable approach.
+
+
 
