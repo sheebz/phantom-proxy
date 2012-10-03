@@ -50,7 +50,7 @@
     },
     "name":"phantom-proxy",
     "private":false,
-    "version":"0.1.3",
+    "version":"0.1.4",
     "description":"A set of proxy objects for driving  phantomjs from node",
     "repository":{
         "type":"git",
