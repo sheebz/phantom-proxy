@@ -3,12 +3,13 @@ var request = require('./lib/request/main'),
     Q = require('q'),
     qs = require('querystring');
 
+var phantomProcess = undefined;
+
 var phantomProxy = _.extend({}, {
     createProxy:function (options, callbackFn) {
         options = options || {};
         var self = this;
         this.startServer(options.port, function () {
-            console.log('server started pid:' + self.phantomjsProc.pid);
             self.page = webpageInterface;
             self.phantom = phantomInterface;
             callbackFn({
@@ -17,12 +18,30 @@ var phantomProxy = _.extend({}, {
             });
         });
     },
-    destroy:function () {
-        console.log('killing process');
-        this.phantomjsProc && this.phantomjsProc.kill('SIGHUP');
+    ping:function (callbackFn) {
+        var self = this;
+        console.log('pinging service');
+        request.get('http://localhost:1061/ping', function (error, response, body) {
+            if (response && response.statusCode == 200) {
+                callbackFn.call(self, true);
+            } else {
+                callbackFn.call(self, false);
+            }
+        });
     },
     startServer:function (port, callbackFn) {
-        var eventEmitter = require('events').EventEmitter,
+        var self = this;
+        this.ping(function (result) {
+            if (!result) {
+                this.createServer(port, function () {
+                    console.log('server started pid:' + phantomProcess.pid);
+                    callbackFn();
+                });
+            }
+        });
+    },
+    createServer:function (port, callbackFn) {
+        var
             self = this,
             starting = true,
             fs = require('fs'),
@@ -30,22 +49,32 @@ var phantomProxy = _.extend({}, {
 
         var serverPath = __dirname + '/' + require('path').normalize('./lib/phantomServer.js');
 
-        this.phantomjsProc =
+        phantomProcess  =
             spawn('phantomjs',
                 [
                     serverPath
                 ], {
-                    detached:true,
+                    detached:false,
                     stdio:
                         [
                             'pipe',
                             'pipe',
-                            process.stderr
+                            'pipe'
                         ]
                 });
 
-        this.phantomjsProc.unref();
-        this.phantomjsProc.stdout.on('data', function (data) {
+        //phantomProcess.unref();
+        phantomProcess.on('exit', function (data) {
+            console.log('exit called');
+        });
+        phantomProcess.on('SIGHUP', function () {
+            console.log('Got SIGHUP signal.');
+        });
+        phantomProcess.stderr.on('data', function(data){
+           console.error(data.toString().red);
+        });
+
+        phantomProcess.stdout.on('data', function (data) {
 
             var msg = data.toString();
             try {
@@ -53,7 +82,7 @@ var phantomProxy = _.extend({}, {
                 self.page && self.page[event.source] && self.page[event.source].call(self.page, event);
             }
             catch (error) {
-                console.error(error);
+                console.log(msg);
             }
 
             if (starting) {
@@ -62,11 +91,9 @@ var phantomProxy = _.extend({}, {
                     callbackFn();
                 }
                 else {
-                    self.phantomjsProc.kill();
                     throw new Error('unable to start server');
                 }
             }
-
         });
     }
 });
@@ -86,14 +113,9 @@ var phantomInterface = _.extend({}, {
             });
     },
     //functions
-    exit:function (returnValue, callbackFn) {
-        request.post('http://localhost:1061/phantom/functions/exit', {form:{ arguments:JSON.stringify(
-                [
-                    returnValue
-                ], null, 4)}},
-            function (error, response, body) {
-                callbackFn && callbackFn.call(this, body);
-            });
+    exit:function (callbackFn) {
+        phantomProcess.kill('SIGHUP');
+        callbackFn();
     },
     injectJs:function (filename, callbackFn) {
         request.post('http://localhost:1061/phantom/functions/injectJs', {form:{arguments:JSON.stringify(arguments)}},
