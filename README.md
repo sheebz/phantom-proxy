@@ -21,6 +21,20 @@ require('phantom-proxy').createProxy(function(proxy){
 });
 ```
 
+#### Page Object
+##### open()
+Opens a webpage with url and callback function arguments.
+```javascript
+require('phantom-proxy').createProxy(function(proxy){
+  var page = proxy.page,
+  phantom = proxy.phantom;
+  
+  page.open('http://www.w3.org', function(){
+  
+  });  
+  
+});
+```
 
 ```javascript
 phantomProxy = require('phantom-proxy');
