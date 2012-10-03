@@ -25,6 +25,21 @@ require('phantom-proxy').createProxy({}, function(proxy){
 
 #### Phantom Object
 The phantom object corresponds to the phantom object in the native phantomJs API.
+#### exit(callbackFn)
+Terminates phantom webserver and destroys proxy.
+```javascript
+require('phantom-proxy').createProxy({}, function(proxy){
+  var page = proxy.page,
+  phantom = proxy.phantom;
+  
+  page.open('http://www.w3.org', function(){
+    console.log('page now open');
+    phantom.exit(function(){
+      console.log('phantom proxy is now offline');
+    });
+  });  
+  
+});
 
 #### Page Object
 The page object corresponds to the webpage object in the native phantomJs API.
