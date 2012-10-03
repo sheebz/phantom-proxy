@@ -22,7 +22,7 @@ require('phantom-proxy').createProxy(function(proxy){
 ```
 
 #### Page Object
-##### open()
+##### open(url, callbackFn)
 Opens a webpage with url and callback function arguments.
 ```javascript
 require('phantom-proxy').createProxy(function(proxy){
@@ -30,6 +30,22 @@ require('phantom-proxy').createProxy(function(proxy){
   phantom = proxy.phantom;
   
   page.open('http://www.w3.org', function(){
+    console.log('page now open');
+  });  
+  
+});
+```
+##### waitForSelector(selector, callbackFn)
+Polls page for presence of selector, executes callback when selector is present.
+```javascript
+require('phantom-proxy').createProxy(function(proxy){
+  var page = proxy.page,
+  phantom = proxy.phantom;
+  
+  page.open('http://www.w3.org', function(){
+    page.waitForSelector('body', function(){
+      console.log('body tag present');
+    });
     console.log('page now open');
   });  
   
