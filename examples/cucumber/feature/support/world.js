@@ -7,7 +7,6 @@ var phantom = require('phantom-proxy'),
 
 var World = function World(worldCallback) {
     var self = this;
-    self.baseUrl = 'http://localhost:8007/#';
     _.extend(self, {
         initialize:function () {
             phantom.createProxy({}, function (proxy) {
