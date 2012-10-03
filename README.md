@@ -37,9 +37,9 @@ require('phantom-proxy').createProxy({}, function(proxy){
     phantom.exit(function(){
       console.log('phantom proxy is now offline');
     });
-  });  
-  
+  }); 
 });
+```
 
 #### Page Object
 The page object corresponds to the webpage object in the native phantomJs API.
