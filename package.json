@@ -5,19 +5,17 @@
         "email":"rob.schieber@gmail.com"
     },
     "dependencies":{
-        "should":"~1.2.0",
-        "mocha":"~1.5.0",
         "colors":"~0.6.0-1",
         "q":"~0.8.8",
         "underscore":"~1.4.0",
-        "qs":"0.5.1",
         "form-data":"~0.0.3",
         "mime":"~1.2.7"
     },
     "main":"phantom-proxy.js",
     "devDependencies":{
         "should":"~1.2.0",
-        "mocha":"~1.5.0"
+        "mocha":"~1.5.0",
+        "cucumber" : ">0.0.0"
     },
     "bugs":{
         "mail":"rob.schieber@gmail.com",
@@ -39,7 +37,8 @@
                 "feature",
                 "test",
                 "headless",
-                "webkit"
+                "webkit",
+                "cucumber"
             ],
     "engines":{
         "node":">0.6.0"

@@ -20,7 +20,12 @@ describe('phantomProxy', function () {
         this.timeout(0);
         self.initProxy(done);
     });
-
+    afterEach(function (done) {
+        this.timeout(0);
+        proxy.phantom.exit(function () {
+            done();
+        });
+    });
     describe('#getProxy()', function () {
         it('should return an object with a phantom property', function (done) {
             this.timeout(0);
