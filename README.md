@@ -57,9 +57,20 @@ require('phantom-proxy').createProxy({}, function(proxy){
 ##### render(fileName, callbackFn)
 Renders a image of browser.
 ```javascript
-var self = this;
-self.render('loginTest.png', function () {
-    callback();
+require('phantom-proxy').createProxy({}, function(proxy){
+  var page = proxy.page,
+  phantom = proxy.phantom;
+  
+  page.open('http://www.w3.org', function(){
+    page.waitForSelector('body', function(){
+      console.log('body tag present');
+      page.render('myimage.png', function(){
+        console.log('saved my picture!');
+      });
+    });
+    console.log('page now open');
+  });  
+  
 });
 ```
 
