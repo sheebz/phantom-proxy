@@ -1,19 +1,40 @@
 var should = require("should"),
     assert = require('assert'),
-    phantomProxy = require('../phantom-proxy'),
     colors = require('colors');
 
-phantomProxy = require('../phantom-proxy');
-phantomProxy.createProxy({}, function (proxy) {
-    proxy.page.onConsoleMessage = function (event) {
-        console.log(JSON.stringify(event).grey);
+describe('phantomProxy', function () {
+    var
+        phantomProxy = require('../index'),
+        self = this,
+        proxy;
+
+    this.initProxy = function (callbackFn) {
+        console.log('init');
+        phantomProxy.createProxy({}, function (value) {
+            proxy = value;
+            callbackFn();
+        });
     };
-    proxy.page.open('http://www.google.com', function () {
-        proxy.page.waitForSelector('body', function () {
-            console.log('done');
-            proxy.page.render('./scratch/loginTest.png', function () {
-                proxy.phantom.exit(function () {
-                    console.log('done'.green.bold);
+
+    beforeEach(function (done) {
+        this.timeout(0);
+        self.initProxy(done);
+    });
+
+    describe('#getProxy()', function () {
+        it('should return an object with a phantom property', function (done) {
+            this.timeout(0);
+            should.exist(proxy.page);
+            should.exist(proxy.phantom);
+            done();
+        });
+    });
+    describe('page', function () {
+        describe('#open()', function () {
+            it('should return an object with a phantom property', function (done) {
+                this.timeout(0);
+                proxy.page.open('http://www.w3.org', function () {
+                    done();
                 });
             });
         });
