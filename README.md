@@ -9,6 +9,18 @@ PhantomJs is an incredibly useful tool for functional and unit testing.  Problem
 `npm install phantom-proxy` 
 
 ## Usage
+### API
+#### phantomProxy object
+##### CreateProxy()
+use this method to create an instance of the phantom proxy objects.  The return value will be an object with a page proxy and a phantom proxy.  These properties correspond to the phantom and webpage objects on the native phantom API.
+```javascript
+require('phantom-proxy').createProxy(function(proxy){
+  var page = proxy.page,
+  phantom = proxy.phantom;
+  
+});
+```
+
 
 ```javascript
 phantomProxy = require('phantom-proxy');
@@ -27,6 +39,7 @@ phantomProxy.createProxy({}, function (proxy) {
     });
 });
 ```
+
 ## FAQ
 ### Why do we need another nodejs runtime for phantom?
 Phantom-proxy takes a different approach to communicating with phantom than these modules.  Phantom-node passes messages using alerts and express.  While this was an ingenious solution to a difficult problem at the time, better solutions are now available.  As of version 1.4, phantomjs provides an embedded webserver called mongoose which can be used to pass messages.  Phantom-proxy leverages this, which is the fastst and most reliable approach.
