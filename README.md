@@ -23,7 +23,11 @@ require('phantom-proxy').createProxy({}, function(proxy){
 });
 ```
 
+#### Phantom Object
+The phantom object corresponds to the phantom object in the native phantomJs API.
+
 #### Page Object
+The page object corresponds to the webpage object in the native phantomJs API.
 ##### open(url, callbackFn)
 Opens a webpage with url and callback function arguments.
 ```javascript
