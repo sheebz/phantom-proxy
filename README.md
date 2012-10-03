@@ -30,7 +30,7 @@ require('phantom-proxy').createProxy(function(proxy){
   phantom = proxy.phantom;
   
   page.open('http://www.w3.org', function(){
-  
+    console.log('page now open');
   });  
   
 });
