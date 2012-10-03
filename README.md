@@ -11,10 +11,12 @@ PhantomJs is an incredibly useful tool for functional and unit testing.  Problem
 ## Usage
 ### API
 #### phantomProxy object
-##### CreateProxy()
-use this method to create an instance of the phantom proxy objects.  The return value will be an object with a page proxy and a phantom proxy.  These properties correspond to the phantom and webpage objects on the native phantom API.
+##### CreateProxy(options, callbackFn)
+use this method to create an instance of the phantom proxy objects.  The return value will be an object with a page proxy and a phantom proxy.  These properties correspond to the phantom and webpage objects on the native phantom API.  
+
+When this method is called, a new phantomjs process is spawned.  The new phantomjs process creates a mongoose webserver on localhost:1061.  All subsequent communication with phantom occurs via http requests. 
 ```javascript
-require('phantom-proxy').createProxy(function(proxy){
+require('phantom-proxy').createProxy({}, function(proxy){
   var page = proxy.page,
   phantom = proxy.phantom;
   
@@ -25,7 +27,7 @@ require('phantom-proxy').createProxy(function(proxy){
 ##### open(url, callbackFn)
 Opens a webpage with url and callback function arguments.
 ```javascript
-require('phantom-proxy').createProxy(function(proxy){
+require('phantom-proxy').createProxy({}, function(proxy){
   var page = proxy.page,
   phantom = proxy.phantom;
   
@@ -38,7 +40,7 @@ require('phantom-proxy').createProxy(function(proxy){
 ##### waitForSelector(selector, callbackFn)
 Polls page for presence of selector, executes callback when selector is present.
 ```javascript
-require('phantom-proxy').createProxy(function(proxy){
+require('phantom-proxy').createProxy({}, function(proxy){
   var page = proxy.page,
   phantom = proxy.phantom;
   
