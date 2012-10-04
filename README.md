@@ -103,6 +103,8 @@ require('phantom-proxy').createProxy({}, function(proxy){
   
 });
 ```
+##### renderBase64(type, callbackFn)
+Returns a base64 representation of image. 
 
 ##### evaluate(functionToEvaluate, callbackFn, [arg1, arg2,... argN]
 Executes functionToEvaluate in phantomJS browser.  Once function executes, callbackFn will be invoked with a result parameter. The Third and sebsequent arguments represent optional parameters which will be passed to the functionToEvaluate function when it is invoked in the browser.
