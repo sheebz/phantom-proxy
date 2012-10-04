@@ -10,45 +10,35 @@ describe('phantomProxy', function () {
         self = this,
         proxy;
 
-    this.initProxy = function (callbackFn) {
-        console.log('init');
-        phantomProxy.createProxy({}, function (value) {
-            proxy = value;
-            callbackFn();
-        });
-    };
+
 
     beforeEach(function (done) {
-        this.timeout(0);
-        self.initProxy(done);
+        this.timeout(10000);
+        phantomProxy.createProxy({}, function (value) {
+            proxy = value;
+            done();
+        });
     });
     afterEach(function (done) {
-        this.timeout(0);
+        this.timeout(10000);
         proxy.phantom.exit(function () {
             done();
         });
     });
     describe('#getProxy()', function () {
         it('should return an object with a phantom property', function (done) {
-            this.timeout(0);
+            this.timeout(10000);
             should.exist(proxy.page);
             should.exist(proxy.phantom);
             done();
         });
     });
     describe('page', function () {
-        describe('#open()', function () {
+        describe('#open()', function (done) {
             it('should return an object with a phantom property', function (done) {
-                this.timeout(0);
+                this.timeout(10000);
                 proxy.page.open('http://localhost:8002/#login/index', function () {
-                    proxy.page.evaluate(function(){
-                        $('#userName').val('test');
-                        $('#password').val('test');
-
-                        return true;
-                    }, function(result){
-                        console.log(result);
-                    });
+                        done();
                 });
             });
         });
