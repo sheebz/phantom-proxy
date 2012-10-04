@@ -11,7 +11,7 @@ PhantomJs is an incredibly useful tool for functional and unit testing.  Problem
 ## Usage
 ### API
 #### phantomProxy object
-##### CreateProxy(options, callbackFn)
+##### createProxy(options, callbackFn)
 use this method to create an instance of the phantom proxy objects.  The return value will be an object with a page proxy and a phantom proxy.  These properties correspond to the phantom and webpage objects on the native phantom API.  
 
 When this method is called, a new phantomjs process is spawned.  The new phantomjs process creates a mongoose webserver on localhost:1061.  All subsequent communication with phantom occurs via http requests. 
@@ -23,7 +23,7 @@ require('phantom-proxy').createProxy({}, function(proxy){
 });
 ```
 
-#### Phantom Object
+#### phantom Object
 The phantom object corresponds to the phantom object in the native phantomJs API.
 #### exit(callbackFn)
 Terminates phantom webserver and destroys proxy.
@@ -43,6 +43,17 @@ require('phantom-proxy').createProxy({}, function(proxy){
 
 #### Page Object
 The page object corresponds to the webpage object in the native phantomJs API.
+
+##### set(propertyName, propertyValue, callbackFn)
+sets property on page object
+```javascript
+                //set viewport size for browser window
+                proxy.page.set('viewportSize', 
+                { width:320, height:480 }, function (result) {
+                    console.log(result.toString().cyan);
+                    worldCallback.call(self);
+                })
+```
 ##### open(url, callbackFn)
 Opens a webpage with url and callback function arguments.
 ```javascript
