@@ -1,2 +1,2 @@
 
-module.exports = require('./lib/phantom-proxy');
+module.exports = require('./lib/proxy');
