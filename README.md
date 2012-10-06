@@ -1,7 +1,10 @@
 # phantom-proxy
 * Allows you to drive [phantomjs](www.phantomjs.org) in [node](www.nodejs.org)
-* Does not rely on alert implementation side effects or other hacks for communication.
-* 
+* Does not rely on alert side effects or other hacks for communicating with phantomjs
+* Provides full api - evaluate function accepts parameters - no more hard coded strings
+* Provides additional useful methods such as waitForSelector
+* Can easily integrate with feature testing frameworks such as [cucumber](https://github.com/cucumber/cucumber-js), jasmine, mocha
+
 Provides a proxy interface for phantomjs which runs inside of node.  Now you can run phantom and access the full api from within nodejs.
 
 ## Overview
