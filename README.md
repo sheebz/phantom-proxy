@@ -1,4 +1,7 @@
 # phantom-proxy
+* Allows you to drive [phantomjs](www.phantomjs.org) in [node](www.nodejs.org)
+* Does not rely on alert implementation side effects or other hacks for communication.
+* 
 Provides a proxy interface for phantomjs which runs inside of node.  Now you can run phantom and access the full api from within nodejs.
 
 ## Overview
