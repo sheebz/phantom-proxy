@@ -7,7 +7,7 @@
 * Can easily integrate with feature testing frameworks such as [cucumber](https://github.com/cucumber/cucumber-js), jasmine, mocha
 
 ## Overview
-PhantomJs is an incredibly useful tool for functional and unit testing.  PhantomJs runs in its own process, making it difficult to drive from node.  Phantom-proxy solves this problem by spawning a phantomjs process, then using httprequests to communicate with phantom's embedded mongoose webserver.  The result is a 
+PhantomJs is an incredibly useful tool for functional and unit testing.  PhantomJs runs in its own process, making it difficult to drive from node.  Phantom-proxy solves this problem, allowing you to fully drive phantomjs from node.
 
 ## Installation
 `npm install phantom-proxy` 
