@@ -1,10 +1,10 @@
 # phantom-proxy
-* Allows you to drive [phantomjs](www.phantomjs.org) in [node](www.nodejs.org)
+* Allows you to drive [phantomjs](www.phantomjs.org) from [node](www.nodejs.org)
 * Does not rely on alert side effects or communicating with phantomjs
-* Provides full api - evaluate function accepts parameters - no more hard coded strings
+* Uses Phantom's embedded web server for communication
+* Provides a full api - including a parametrized evaluate function - no more hard coded strings
 * Provides additional useful methods such as waitForSelector
 * Can easily integrate with feature testing frameworks such as [cucumber](https://github.com/cucumber/cucumber-js), jasmine, mocha
-
 
 ## Overview
 PhantomJs is an incredibly useful tool for functional and unit testing.  PhantomJs runs in its own process, making it difficult to drive from node.  Phantom-proxy solves this problem by spawning a phantomjs process, then using httprequests to communicate with phantom's embedded mongoose webserver.  The result is a 
@@ -126,7 +126,5 @@ phantomProxy.createProxy({}, function (proxy) {
 
 ## FAQ
 ### Why do we need another nodejs runtime for phantom?
-Phantom-proxy takes a different approach to communicating with phantom than these modules.  Phantom-node passes messages using alerts and express.  While this was an ingenious solution to a difficult problem at the time, better solutions are now available.  As of version 1.4, phantomjs provides an embedded webserver called mongoose which can be used to pass messages.  Phantom-proxy leverages this, which is the fastst and most reliable approach.
-
-
+The short answer is that phantom-proxy has a better implementation.  Other drivers seem to use a side effect of alerts to communicate with phantomjs, which unfortunately is not a good long term solution. Also all the other libraries I have seen have not fully implemented the evaluate function.  For whatever reason, the other nodejs phantom driver evaluate implementations do have a parametrized client side evaluation function - this is a big problem and was the main motivation for creating this package.
 
