@@ -11,7 +11,7 @@ PhantomJs is an incredibly useful tool for functional and unit testing.  Problem
 ## Usage
 ### API
 #### phantomProxy object
-##### createProxy(options, callbackFn)
+##### create(options, callbackFn)
 use this method to create an instance of the phantom proxy objects.  The return value will be an object with a page proxy and a phantom proxy.  These properties correspond to the phantom and webpage objects on the native phantom API.  
 
 When this method is called, a new phantomjs process is spawned.  The new phantomjs process creates a mongoose webserver on localhost:1061.  All subsequent communication with phantom occurs via http requests. 
