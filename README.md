@@ -146,5 +146,6 @@ phantomProxy.create({}, function (proxy) {
 The short answer is that phantom-proxy has a better implementation.  Other drivers seem to use a side effect of alerts to communicate with phantomjs, which unfortunately is not a good long term solution. Also all the other libraries I have seen do not have a fully implemented the evaluate function - you can't pass additional arguments to the client side function.  This is a big problem and was the main motivation for creating this package.
 
 ## Revision History
+* version 0.1.13 
 * version 0.1.10 somewhat stable version released to npm.
 
