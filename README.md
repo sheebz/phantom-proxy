@@ -25,8 +25,11 @@ When this method is called, a new phantomjs process is spawned.  The new phantom
 var phantomProxy = require('phantom-proxy').create({}, function(proxy){
   var page = proxy.page,
   phantom = proxy.phantom;
-  
-}).end();
+  //do some stuff...
+  //...
+  //call end when done
+  phantomProxy.end();
+});
 ```
 
 #### phantom Object
@@ -41,23 +44,26 @@ The page object corresponds to the webpage object in the native phantomJs API.
 sets property on page object
 
 ```javascript
-                //set viewport size for browser window
-                proxy.page.set('viewportSize', 
-                { width:320, height:480 }, function (result) {
-                    console.log(result.toString().cyan);
-                    worldCallback.call(self);
-                }).end();
+  //set viewport size for browser window
+  proxy.page.set('viewportSize', 
+  { width:320, height:480 }, function (result) {
+      console.log(result.toString().cyan);
+      worldCallback.call(self);
+  });
 ```
 ##### open(url, callbackFn)
 Opens a webpage with url and callback function arguments.
 
 ```javascript
-require('phantom-proxy').create({}, function(proxy){
+var phantomProxy = require('phantom-proxy').create({}, function(proxy){
   var page = proxy.page,
   phantom = proxy.phantom;
   
   page.open('http://www.w3.org', function(){
     console.log('page now open');
+    
+    //close proxy
+    phantomProxy.end();
   });  
   
 }).end();
@@ -66,13 +72,16 @@ require('phantom-proxy').create({}, function(proxy){
 Polls page for presence of selector, executes callback when selector is present.
 
 ```javascript
-require('phantom-proxy').create({}, function(proxy){
+var phantomProxy = require('phantom-proxy').create({}, function(proxy){
   var page = proxy.page,
   phantom = proxy.phantom;
   
   page.open('http://www.w3.org', function(){
     page.waitForSelector('body', function(){
       console.log('body tag present');
+      
+        //close proxy
+        phantomProxy.end();
     });
     console.log('page now open');
   });
@@ -84,7 +93,7 @@ require('phantom-proxy').create({}, function(proxy){
 Renders a image of browser.
 
 ```javascript
-require('phantom-proxy').create({}, function(proxy){
+var phantomProxy = require('phantom-proxy').create({}, function(proxy){
   var page = proxy.page,
   phantom = proxy.phantom;
   
@@ -93,12 +102,15 @@ require('phantom-proxy').create({}, function(proxy){
       console.log('body tag present');
       page.render('myimage.png', function(){
         console.log('saved my picture!');
+        
+        //close proxy
+        phantomProxy.end();
       });
     });
     console.log('page now open');
   });  
   
-}).end();
+});
 ```
 
 ##### renderBase64(type, callbackFn)
@@ -116,7 +128,7 @@ phantomProxy.create({}, function (proxy) {
     proxy.page.onConsoleMessage = function (event) {
         console.log(JSON.stringify(event));
     };
-}).end();
+});
 ```
 
 ## FAQ
