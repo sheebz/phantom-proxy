@@ -75,9 +75,9 @@ require('phantom-proxy').create({}, function(proxy){
       console.log('body tag present');
     });
     console.log('page now open');
-  }).end();  
+  });
   
-});
+}).end();
 ```
 
 ##### render(fileName, callbackFn)
