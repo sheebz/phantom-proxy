@@ -29,8 +29,10 @@ var phantomProxy = require('phantom-proxy').create({}, function(proxy){
 
 #### phantom Object
 The phantom object corresponds to the phantom object in the native phantomJs API.
+
 #### exit(callbackFn)
 Terminates phantom webserver and destroys proxy.
+
 ```javascript
 require('phantom-proxy').createProxy({}, function(proxy){
   var page = proxy.page,
@@ -50,6 +52,7 @@ The page object corresponds to the webpage object in the native phantomJs API.
 
 ##### set(propertyName, propertyValue, callbackFn)
 sets property on page object
+
 ```javascript
                 //set viewport size for browser window
                 proxy.page.set('viewportSize', 
@@ -60,6 +63,7 @@ sets property on page object
 ```
 ##### open(url, callbackFn)
 Opens a webpage with url and callback function arguments.
+
 ```javascript
 require('phantom-proxy').createProxy({}, function(proxy){
   var page = proxy.page,
@@ -73,6 +77,7 @@ require('phantom-proxy').createProxy({}, function(proxy){
 ```
 ##### waitForSelector(selector, callbackFn)
 Polls page for presence of selector, executes callback when selector is present.
+
 ```javascript
 require('phantom-proxy').createProxy({}, function(proxy){
   var page = proxy.page,
@@ -107,6 +112,7 @@ require('phantom-proxy').createProxy({}, function(proxy){
   
 });
 ```
+
 ##### renderBase64(type, callbackFn)
 Returns a base64 representation of image. 
 
