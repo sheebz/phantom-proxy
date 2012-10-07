@@ -4,27 +4,29 @@ var should = require("should"),
     phantomProxy = require('../index');
 
 describe('phantomProxy', function () {
-
-    it('should return an object with a phantom property', function (done) {
-        this.timeout(10000);
-        phantomProxy.create(function (proxy) {
-            should.exist(proxy.page);
-            should.exist(proxy.phantom);
-            proxy.page.open('http://localhost:8002/#login/index', function (result) {
-                console.log('result ' + result);
-                assert.equal(result, true);
-                done();
+    describe('#create()', function () {
+        it('should return a proxy object with phantom and webpage properties', function (done) {
+            this.timeout(10000);
+            phantomProxy.create(function (proxy) {
+                should.exist(proxy.page);
+                should.exist(proxy.phantom);
                 phantomProxy.end();
+                done();
+            });
+        });
+        it('should create a proxy on a different port', function (done) {
+            this.timeout(10000);
+            var options = {
+                "port":1062
+            };
+            phantomProxy.create(options, function (proxy) {
+                should.exist(proxy.page);
+                should.exist(proxy.phantom);
+                phantomProxy.end();
+                done();
             });
         });
     });
-
-    it('should kill the phantomjs process', function () {
-        phantomProxy.end();
-        console.log(phantomProxy);
-        assert.equal(phantomProxy.phantomProcess, undefined);
-    });
-
 });
 
 

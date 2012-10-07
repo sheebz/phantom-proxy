@@ -3,10 +3,7 @@ var should = require("should"),
     colors = require('colors'),
     phantomProxy = require('../index');
 
-describe('webpage', function () {
-
-    require('./phantom/injectJs.js');
-
+describe('phantom', function () {
     before(function (done) {
         this.timeout(10000);
         phantomProxy.create(function (value) {
@@ -18,4 +15,7 @@ describe('webpage', function () {
     after(function () {
         phantomProxy.end();
     });
+    require('./phantom/injectJs.js');
+    require('./phantom/args.js');
+
 });
