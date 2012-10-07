@@ -30,7 +30,7 @@ Create accepts an options object as the first parameter.  This argument is optio
 It is important to call end when you are done using the proxy to terminate the underlying phantomjs process that is being driven.
 
 ```javascript
-var phantomProxy = require('phantom-proxy').create({}, function(proxy){
+var phantomProxy = require('phantom-proxy').create(function(proxy){
   var page = proxy.page,
   phantom = proxy.phantom;
   //do some stuff...
@@ -40,10 +40,8 @@ var phantomProxy = require('phantom-proxy').create({}, function(proxy){
 });
 ```
 
-
 #### phantom Object
 The phantom object corresponds to the phantom object in the native phantomJs API.
-
 
 #### Page Object
 The page object corresponds to the webpage object in the native phantomJs API.
@@ -59,6 +57,7 @@ sets property on page object
       worldCallback.call(self);
   });
 ```
+
 ##### open(url, callbackFn)
 Opens a webpage with url and callback function arguments.
 
@@ -76,6 +75,7 @@ var phantomProxy = require('phantom-proxy').create({}, function(proxy){
   
 });
 ```
+
 ##### waitForSelector(selector, callbackFn)
 Polls page for presence of selector, executes callback when selector is present.
 
@@ -138,7 +138,8 @@ phantomProxy.create({}, function (proxy) {
     };
 });
 ```
-## More documentation coming...
+
+## More documentation and features to come...
 
 ## FAQ
 ### Why do we need another nodejs runtime for phantom?
