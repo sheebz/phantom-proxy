@@ -21,6 +21,9 @@ use this method to create an instance of the phantom proxy objects.  The return 
 
 When this method is called, a new phantomjs process is spawned.  The new phantomjs process creates a mongoose webserver on localhost:1061.  All subsequent communication with phantom occurs via http requests. 
 
+##### end()
+It is important to call end when you are done using the proxy to terminate the phantomjs process.  
+
 ```javascript
 var phantomProxy = require('phantom-proxy').create({}, function(proxy){
   var page = proxy.page,
@@ -31,6 +34,7 @@ var phantomProxy = require('phantom-proxy').create({}, function(proxy){
   phantomProxy.end();
 });
 ```
+
 
 #### phantom Object
 The phantom object corresponds to the phantom object in the native phantomJs API.
