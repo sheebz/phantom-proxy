@@ -46,7 +46,7 @@ sets property on page object
                 { width:320, height:480 }, function (result) {
                     console.log(result.toString().cyan);
                     worldCallback.call(self);
-                })
+                }).end();
 ```
 ##### open(url, callbackFn)
 Opens a webpage with url and callback function arguments.
