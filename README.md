@@ -76,8 +76,8 @@ var phantomProxy = require('phantom-proxy').create({}, function(proxy){
 });
 ```
 
-##### waitForSelector(selector, callbackFn)
-Polls page for presence of selector, executes callback when selector is present.
+##### waitForSelector(selector, callbackFn, timeout)
+Polls page for presence of selector, executes callback when selector is present.  
 
 ```javascript
 var phantomProxy = require('phantom-proxy').create({}, function(proxy){
