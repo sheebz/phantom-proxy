@@ -66,7 +66,7 @@ var phantomProxy = require('phantom-proxy').create({}, function(proxy){
     phantomProxy.end();
   });  
   
-}).end();
+});
 ```
 ##### waitForSelector(selector, callbackFn)
 Polls page for presence of selector, executes callback when selector is present.
@@ -86,7 +86,7 @@ var phantomProxy = require('phantom-proxy').create({}, function(proxy){
     console.log('page now open');
   });
   
-}).end();
+});
 ```
 
 ##### render(fileName, callbackFn)
