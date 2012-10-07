@@ -26,28 +26,13 @@ var phantomProxy = require('phantom-proxy').create({}, function(proxy){
   var page = proxy.page,
   phantom = proxy.phantom;
   
-});
+}).end();
 ```
 
 #### phantom Object
 The phantom object corresponds to the phantom object in the native phantomJs API.
 
-#### exit(callbackFn)
-Terminates phantom webserver and destroys proxy.
 
-```javascript
-require('phantom-proxy').createProxy({}, function(proxy){
-  var page = proxy.page,
-  phantom = proxy.phantom;
-  
-  page.open('http://www.w3.org', function(){
-    console.log('page now open');
-    phantom.exit(function(){
-      console.log('phantom proxy is now offline');
-    });
-  }); 
-});
-```
 
 #### Page Object
 The page object corresponds to the webpage object in the native phantomJs API.
@@ -67,7 +52,7 @@ sets property on page object
 Opens a webpage with url and callback function arguments.
 
 ```javascript
-require('phantom-proxy').createProxy({}, function(proxy){
+require('phantom-proxy').create({}, function(proxy){
   var page = proxy.page,
   phantom = proxy.phantom;
   
@@ -75,13 +60,13 @@ require('phantom-proxy').createProxy({}, function(proxy){
     console.log('page now open');
   });  
   
-});
+}).end();
 ```
 ##### waitForSelector(selector, callbackFn)
 Polls page for presence of selector, executes callback when selector is present.
 
 ```javascript
-require('phantom-proxy').createProxy({}, function(proxy){
+require('phantom-proxy').create({}, function(proxy){
   var page = proxy.page,
   phantom = proxy.phantom;
   
@@ -90,7 +75,7 @@ require('phantom-proxy').createProxy({}, function(proxy){
       console.log('body tag present');
     });
     console.log('page now open');
-  });  
+  }).end();  
   
 });
 ```
@@ -99,7 +84,7 @@ require('phantom-proxy').createProxy({}, function(proxy){
 Renders a image of browser.
 
 ```javascript
-require('phantom-proxy').createProxy({}, function(proxy){
+require('phantom-proxy').create({}, function(proxy){
   var page = proxy.page,
   phantom = proxy.phantom;
   
@@ -113,7 +98,7 @@ require('phantom-proxy').createProxy({}, function(proxy){
     console.log('page now open');
   });  
   
-});
+}).end();
 ```
 
 ##### renderBase64(type, callbackFn)
@@ -127,11 +112,11 @@ Executes functionToEvaluate in phantomJS browser.  Once function executes, callb
 
 ```javascript
 phantomProxy = require('phantom-proxy');
-phantomProxy.createProxy({}, function (proxy) {
+phantomProxy.create({}, function (proxy) {
     proxy.page.onConsoleMessage = function (event) {
         console.log(JSON.stringify(event));
     };
-});
+}).end();
 ```
 
 ## FAQ
