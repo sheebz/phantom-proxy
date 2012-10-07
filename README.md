@@ -10,6 +10,7 @@
 PhantomJs is an incredibly useful tool for functional and unit testing.  PhantomJs runs in its own process, making it difficult to drive from node.  Phantom-proxy solves this problem, allowing you to fully drive phantomjs from node.
 
 ## Installation
+
 `npm install phantom-proxy` 
 
 ## Usage
@@ -19,6 +20,7 @@ PhantomJs is an incredibly useful tool for functional and unit testing.  Phantom
 use this method to create an instance of the phantom proxy objects.  The return value will be an object with a page proxy and a phantom proxy.  These properties correspond to the phantom and webpage objects on the native phantom API.  
 
 When this method is called, a new phantomjs process is spawned.  The new phantomjs process creates a mongoose webserver on localhost:1061.  All subsequent communication with phantom occurs via http requests. 
+
 ```javascript
 var phantomProxy = require('phantom-proxy').create({}, function(proxy){
   var page = proxy.page,
@@ -95,6 +97,7 @@ require('phantom-proxy').createProxy({}, function(proxy){
 
 ##### render(fileName, callbackFn)
 Renders a image of browser.
+
 ```javascript
 require('phantom-proxy').createProxy({}, function(proxy){
   var page = proxy.page,
@@ -121,6 +124,7 @@ Executes functionToEvaluate in phantomJS browser.  Once function executes, callb
 
 #### Events
 #### Subscribing to events
+
 ```javascript
 phantomProxy = require('phantom-proxy');
 phantomProxy.createProxy({}, function (proxy) {
