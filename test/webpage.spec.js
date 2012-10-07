@@ -9,6 +9,7 @@ describe('webpage', function () {
     require('./webpage/evaluate.js');
     require('./webpage/render.js');
     require('./webpage/set.js');
+    require('./webpage/waitForSelector.js');
 
     before(function (done) {
         this.timeout(10000);
