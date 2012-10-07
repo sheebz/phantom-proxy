@@ -1,7 +1,7 @@
 # phantom-proxy
 * Allows you to drive [phantomjs](www.phantomjs.org) from [node](www.nodejs.org)
-* Does not rely on alert side effects or communicating with phantomjs
-* Uses Phantom's embedded web server for communication
+* Does not rely on alert side effects for communicating with phantomjs
+* Uses Phantom's embedded mongoose web server for communication - more efficient, simpler, faster.
 * Provides a full api - including a parametrized evaluate function - no more hard coded strings
 * Provides additional useful methods such as waitForSelector
 * Can easily integrate with feature testing frameworks such as [cucumber](https://github.com/cucumber/cucumber-js), jasmine, mocha
@@ -34,7 +34,6 @@ var phantomProxy = require('phantom-proxy').create({}, function(proxy){
 
 #### phantom Object
 The phantom object corresponds to the phantom object in the native phantomJs API.
-
 
 
 #### Page Object
