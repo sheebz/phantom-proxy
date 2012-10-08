@@ -21,10 +21,27 @@ use this method to create an instance of the phantom proxy objects.  The return 
 
 When this method is called, a new phantomjs process is spawned.  The new phantomjs process creates a mongoose webserver on localhost:1061.  All subsequent communication with phantom occurs via http requests. 
 
-###### Options argument
+###### Options argument (experimental)
 Create accepts an options object as the first parameter.  This argument is optional.  And can contain the following properties:
 
-* port - Port that phantomjs will use for communicating w/ phantom-proxy       
+```javascript
+        
+        var defaultoptions = {
+            'ignoreSslErrors':true,
+            'localToRemoteUrlAccessEnabled':true,
+            'cookiesFile':'cookies.txt',
+            'diskCache':'yes',
+            'loadImages':'yes',
+            'localToRemoteUrlAccess':'no',
+            'maxDiskCache':'50000',
+            'outputEncoding':'utf8',
+            'proxy':'0',
+            'proxyType':'yes',
+            'scriptEncoding':'yes',
+            'webSecurity':'yes',
+            'port':1061
+        };
+```
 
 ##### end()
 It is important to call end when you are done using the proxy to terminate the underlying phantomjs process that is being driven.
