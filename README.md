@@ -22,7 +22,7 @@ use this method to create an instance of the phantom proxy objects.  The return 
 When this method is called, a new phantomjs process is spawned.  The new phantomjs process creates a mongoose webserver on localhost:1061.  All subsequent communication with phantom occurs via http requests. 
 
 ###### Options argument (experimental)
-Create accepts an options object as the first parameter.  This argument is optional.  And can contain the following properties:
+Create accepts an options object as the first parameter.  This argument is optional.  Properties and their default values are listed below.
 
 ```javascript
         
