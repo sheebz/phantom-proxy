@@ -15,7 +15,7 @@
         "q" : "~0.8.8",
         "underscore" : "~1.4.0"
     },
-    "description" : "A set of proxy objects for driving  phantomjs from node",
+    "description" : "a lightweight proxy that lets you to drive phantomjs from node.",
     "devDependencies" : {
         "cucumber" : ">0.0.0",
         "mocha" : "~1.5.0",
@@ -55,5 +55,5 @@
         "type" : "git",
         "url" : "https://github.com/sheebz/phantom-proxy"
     },
-    "version" : "0.1.14"
+    "version" : "0.1.15"
 }
