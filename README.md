@@ -16,7 +16,7 @@ PhantomJs is an incredibly useful tool for functional and unit testing.  Phantom
 ## Usage
 ### Examples
 ```javascript
-var phantomProxy = require(phantom-proxy);
+var phantomProxy = require('phantom-proxy');
 
 phantomProxy.create({}, function (proxy) {
     var page = proxy.page;
