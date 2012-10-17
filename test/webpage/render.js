@@ -4,7 +4,7 @@ var should = require("should"),
 
 describe('#render()', function () {
     it('should return true', function (done) {
-        proxy.page.render('scratch.png', function (result) {
+        proxy.page.render('./scratch/scratch.png', function (result) {
             assert.equal(result, true);
             done();
         });
