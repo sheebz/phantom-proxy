@@ -14,6 +14,22 @@ PhantomJs is an incredibly useful tool for functional and unit testing.  Phantom
 `npm install phantom-proxy`
 
 ## Usage
+### Examples
+```javascript
+var phantomProxy = require(phantom-proxy);
+
+phantomProxy.create({}, function (proxy) {
+    var page = proxy.page;
+    page.open('http://www.w3.org', function () {
+        page.waitForSelector('body', function () {
+            console.log('body tag present');
+            phantomProxy.end();
+        });
+    });
+
+});
+```
+
 ### API
 #### phantomProxy object
 ##### create([options], callbackFn)
@@ -163,6 +179,8 @@ phantomProxy.create({}, function (proxy) {
 The short answer is that phantom-proxy has a better implementation.  Other drivers seem to use a side effect of alerts to communicate with phantomjs, which unfortunately is not a good long term solution. Also all the other libraries I have seen do not have a fully implemented the evaluate function - you can't pass additional arguments to the client side function.  This is a big problem and was the main motivation for creating this package.
 
 ## Revision History
+* 2012-10-17 - version 0.1.16
+   - fixed waitforSelector issue
 * 2012-10-12  - version 0.1.15
     - fixed a problem w/ waitforSelector fn.
     - fixed problem where process wasn't shutting down existing server.
