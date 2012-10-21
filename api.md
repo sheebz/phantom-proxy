@@ -129,7 +129,8 @@ Returns a base64 representation of image.
 Executes functionToEvaluate in phantomJS browser.  Once function executes, callbackFn will be invoked with a result parameter. The Third and sebsequent arguments represent optional parameters which will be passed to the functionToEvaluate function when it is invoked in the browser.
 
 ## Events
-The following events are supported:
+The following events are supported, see [PhantomJs Docs](https://github.com/ariya/phantomjs/wiki/API-Reference) for more information.
+
 <table><thead><th>Event Name</th><th>Notes</th></thead>
 <tbody>
 <tr><td>urlChanged</td><td></td></tr>
