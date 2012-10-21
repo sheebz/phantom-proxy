@@ -15,9 +15,9 @@ describe('webpage', function () {
         this.timeout(10000);
         phantomProxy.create(function (value) {
             proxy = value;
-            proxy.page.onResourceRequested = function (event) {
+            proxy.page.on('resourceRequested', function (request) {
                 console.log(JSON.stringify(event));
-            };
+            });
 
             proxy.page.open('http://www.w3.org', function (result) {
                 assert.equal(result, true);
