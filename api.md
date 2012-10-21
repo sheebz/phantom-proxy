@@ -134,20 +134,20 @@ The following events are supported, see [PhantomJs Docs](https://github.com/ariy
 <table><thead><th>Event Name</th><th>Notes</th></thead>
 <tbody>
 <tr><td>urlChanged</td><td></td></tr>
-<tr><td>onResourceReceived</td><td></td></tr>
-<tr><td>onResourceRequested</td><td></td></tr>
-<tr><td>onPrompt</td><td></td></tr>
-<tr><td>onPageCreated</td><td></td></tr>
-<tr><td>onNavigationRequested</td><td></td></tr>
-<tr><td>onLoadStarted</td><td></td></tr>
-<tr><td>onLoadFinished</td><td></td></tr>
-<tr><td>onInitialized</td><td></td></tr>
-<tr><td>onError</td><td></td></tr>
-<tr><td>onConsoleMessage</td><td></td></tr>
-<tr><td>onConfirm</td><td></td></tr>
-<tr><td>onClosing</td><td></td></tr>
-<tr><td>onCallback</td><td></td></tr>
-<tr><td>onAlert</td><td></td></tr>
+<tr><td>resourceReceived</td><td></td></tr>
+<tr><td>resourceRequested</td><td></td></tr>
+<tr><td>prompt</td><td></td></tr>
+<tr><td>pageCreated</td><td></td></tr>
+<tr><td>navigationRequested</td><td></td></tr>
+<tr><td>loadStarted</td><td></td></tr>
+<tr><td>loadFinished</td><td></td></tr>
+<tr><td>initialized</td><td></td></tr>
+<tr><td>error</td><td></td></tr>
+<tr><td>consoleMessage</td><td></td></tr>
+<tr><td>confirm</td><td></td></tr>
+<tr><td>closing</td><td></td></tr>
+<tr><td>callback</td><td></td></tr>
+<tr><td>alert</td><td></td></tr>
 </tbody>
 </table>
 
