@@ -38,8 +38,8 @@ The short answer is that phantom-proxy has a better implementation.  Other drive
 
 ## Revision History
 * 2012-10-22 - version 0.1.2
-  - breaking - changed the way events are consumed, switched to using nodes emmitter to brodcast events as opposed to invoking instance methods on the object.
-  - Cleaned up javascript, now jshint compliant.
+  - breaking - changed the way events are consumed, switched to using nodes emmitter to brodcast events as opposed to invoking instance methods on the object
+  - Code clean up
 * 2012-10-17 - version 0.1.16
    - fixed waitforSelector issue
 * 2012-10-12  - version 0.1.15
