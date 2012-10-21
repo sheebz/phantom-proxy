@@ -37,6 +37,9 @@ See the [API](api) documentation for more usage information.
 The short answer is that phantom-proxy has a better implementation.  Other drivers seem to use a side effect of alerts to communicate with phantomjs, which unfortunately is not a good long term solution. Also all the other libraries I have seen do not have a fully implemented the evaluate function - you can't pass additional arguments to the client side function.  This is a big problem and was the main motivation for creating this package.
 
 ## Revision History
+* 2012-10-22 - version 0.1.2
+  - breaking - changed the way events are consumed, switched to using nodes emmitter to brodcast events as opposed to invoking instance methods on the object.
+  - Cleaned up javascript, now jshint compliant.
 * 2012-10-17 - version 0.1.16
    - fixed waitforSelector issue
 * 2012-10-12  - version 0.1.15
