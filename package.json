@@ -35,6 +35,13 @@
         "driver",
         "node",
         "phantomjs",
+        "BDD",
+        "automated",
+        "testing",
+        "DOM",
+        "JSDOM",
+        "zombie",
+        "zombiejs",
         "phantom-node",
         "node-phantom",
         "feature",
@@ -56,5 +63,5 @@
         "type" : "git",
         "url" : "https://github.com/sheebz/phantom-proxy"
     },
-    "version" : "0.1.19"
+    "version" : "0.1.2"
 }
