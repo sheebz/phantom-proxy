@@ -129,6 +129,28 @@ Returns a base64 representation of image.
 Executes functionToEvaluate in phantomJS browser.  Once function executes, callbackFn will be invoked with a result parameter. The Third and sebsequent arguments represent optional parameters which will be passed to the functionToEvaluate function when it is invoked in the browser.
 
 ## Events
+The following events are supported:
+<table><thead><th>Event Name</th><th>Notes</th></thead>
+<tbody>
+<tr><td>urlChanged</td><td></td></tr>
+<tr><td>onResourceReceived</td><td></td></tr>
+<tr><td>onResourceRequested</td><td></td></tr>
+<tr><td>onPrompt</td><td></td></tr>
+<tr><td>onPageCreated</td><td></td></tr>
+<tr><td>onNavigationRequested</td><td></td></tr>
+<tr><td>onLoadStarted</td><td></td></tr>
+<tr><td>onLoadFinished</td><td></td></tr>
+<tr><td>onInitialized</td><td></td></tr>
+<tr><td>onError</td><td></td></tr>
+<tr><td>onConsoleMessage</td><td></td></tr>
+<tr><td>onConfirm</td><td></td></tr>
+<tr><td>onClosing</td><td></td></tr>
+<tr><td>onCallback</td><td></td></tr>
+<tr><td>onAlert</td><td></td></tr>
+</tbody>
+</table>
+
+
 #### Subscribing to events
 
 ```javascript
