@@ -30,7 +30,7 @@ phantomProxy.create({}, function (proxy) {
 });
 ```
 
-See the [API](api) documentation for more usage information.
+See the [API](https://github.com/sheebz/phantom-proxy/blob/master/api.md) documentation for more usage information.
 
 ## FAQ
 ### Why do we need another nodejs runtime for phantom?
