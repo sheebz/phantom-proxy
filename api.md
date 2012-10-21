@@ -1,4 +1,4 @@
-# API
+# API Documentation
 ## phantomProxy object
 ### create([options], callbackFn)
 use this method to create an instance of the phantom proxy objects.  The return value will be an object with a page proxy and a phantom proxy.  These properties correspond to the phantom and webpage objects on the native phantom API.
