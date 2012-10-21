@@ -136,7 +136,7 @@ The following events are supported, see [PhantomJs Docs](https://github.com/ariy
 <tr><td>urlChanged</td><td></td></tr>
 <tr><td>resourceReceived</td><td></td></tr>
 <tr><td>resourceRequested</td><td></td></tr>
-<tr><td>prompt</td><td></td></tr>
+<tr><td>prompt</td><td>Event will fire, but callback will not execute in phantomjs context</td></tr>
 <tr><td>pageCreated</td><td></td></tr>
 <tr><td>navigationRequested</td><td></td></tr>
 <tr><td>loadStarted</td><td></td></tr>
@@ -144,7 +144,7 @@ The following events are supported, see [PhantomJs Docs](https://github.com/ariy
 <tr><td>initialized</td><td></td></tr>
 <tr><td>error</td><td></td></tr>
 <tr><td>consoleMessage</td><td></td></tr>
-<tr><td>confirm</td><td></td></tr>
+<tr><td>confirm</td><td>Event will fire, but callback will not execute in phantomjs context</td></tr>
 <tr><td>closing</td><td></td></tr>
 <tr><td>callback</td><td></td></tr>
 <tr><td>alert</td><td></td></tr>
