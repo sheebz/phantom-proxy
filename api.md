@@ -157,8 +157,9 @@ The following events are supported, see [PhantomJs Docs](https://github.com/ariy
 ```javascript
 phantomProxy = require('phantom-proxy');
 phantomProxy.create({}, function (proxy) {
-    proxy.page.onConsoleMessage = function (event) {
-        console.log(JSON.stringify(event));
-    };
+    proxy.page.on('urlChanged', function(){
+      console.log('url changed');
+    });
 });
 ```
+
