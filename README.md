@@ -23,12 +23,30 @@ phantomProxy.create({}, function (proxy) {
     page.open('http://www.w3.org', function () {
         page.waitForSelector('body', function () {
             console.log('body tag present');
-            phantomProxy.end();
+            proxy.end();
         });
     });
 
 });
 ```
+
+```javascript
+            phantomProxy.create({"debug":true}, function (proxy) {
+                proxy.page.open('http://www.w3.org', function (result) {
+                    assert.equal(result, true);
+                    proxy.page.waitForSelector('body', function (result) {
+                        assert.equal(result, true);
+                        proxy.page.render('./scratch/scratch.png', function (result) {
+                            assert.equal(result, true);
+                            proxy.end(function () {
+                              console.log('done');
+                            });
+                        });
+                    }, 1000);
+                });
+            });
+            ```
+            
 
 See the [API](https://github.com/sheebz/phantom-proxy/blob/master/api.md) documentation for more usage information.
 
