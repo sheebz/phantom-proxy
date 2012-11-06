@@ -15,6 +15,7 @@ PhantomJs is an incredibly useful tool for functional and unit testing.  Phantom
 
 ## Usage
 ### Examples
+Navigate to web page and check for body page
 ```javascript
 var phantomProxy = require('phantom-proxy');
 
@@ -30,6 +31,7 @@ phantomProxy.create({}, function (proxy) {
 });
 ```
 
+Same example but, checking for a body tag and rendering a snapshot.
 ```javascript
             phantomProxy.create({"debug":true}, function (proxy) {
                 proxy.page.open('http://www.w3.org', function (result) {
@@ -46,15 +48,14 @@ phantomProxy.create({}, function (proxy) {
                 });
             });
             ```
-            
+
 
 See the [API](https://github.com/sheebz/phantom-proxy/blob/master/api.md) documentation for more usage information.
 
-## FAQ
-### Why do we need another nodejs runtime for phantom?
-The short answer is that phantom-proxy has a better implementation.  Other drivers seem to use a side effect of alerts to communicate with phantomjs, which unfortunately is not a good long term solution. Also all the other libraries I have seen do not have a fully implemented the evaluate function - you can't pass additional arguments to the client side function.  This is a big problem and was the main motivation for creating this package.
-
 ## Revision History
+* 2012-11-06 - version 0.1.5
+ - reworked event communication interface - no longer using stdoutput to pass event messages
+ - reworked process creation and exit logic
 * 2012-11-03 - version 0.1.3
   - added callback parameter to end method on proxy.
   - removed unref call in proxy

@@ -31,24 +31,12 @@
         "node" : ">0.6.0"
     },
     "keywords" : [
-        "phantom",
-        "driver",
-        "node",
-        "phantomjs",
-        "BDD",
-        "automated",
-        "testing",
-        "DOM",
-        "JSDOM",
-        "zombie",
-        "zombiejs",
-        "phantom-node",
-        "node-phantom",
-        "feature",
-        "test",
-        "headless",
-        "webkit",
-        "cucumber"
+            "phantomjs",
+            "phantom",
+            "cucumber",
+            "cucumberjs",
+            "feature",
+            "testing"
     ],
     "licenses" : [
         {
@@ -63,5 +51,5 @@
         "type" : "git",
         "url" : "https://github.com/sheebz/phantom-proxy"
     },
-    "version" : "0.1.2"
+    "version" : "0.1.5"
 }
