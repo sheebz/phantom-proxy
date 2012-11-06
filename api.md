@@ -28,7 +28,7 @@ Create accepts an options object as the first parameter.  This argument is optio
 ```
 
 ### end(callbackFn)
-It is important to call end when you are done using the proxy to terminate the underlying phantomjs process that is being driven.
+You should call end on the returned proxy object to ensure that phantomjs is properly shut down.
 
 ```javascript
 var phantomProxy = require('phantom-proxy').create(function(proxy){
@@ -37,7 +37,7 @@ var phantomProxy = require('phantom-proxy').create(function(proxy){
   //do some stuff...
   //...
   //call end when done
-  phantomProxy.end(function(){
+  proxy.end(function(){
     console.log('phantom has exited');
   });
 });
