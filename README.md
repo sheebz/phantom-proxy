@@ -64,18 +64,25 @@ phantomProxy.create({"debug":true}, function (proxy) {
       else {
         console.log('how did we get here?');
       }
+      
+      proxy.end(function () {
+        console.log('done');
+      });
     });
+    
     proxy.page.open('http://www.w3.org', function (result) {
       proxy.page.on('alert', function (msg) {
           if (msg.trim() === 'hello') {
               console.log('it said hello');
           }
+          
+        proxy.end(function () {
+          console.log('done');
+        });
       });
 
 
-      proxy.end(function () {
-        console.log('done');
-      });
+
     });
 });
             
