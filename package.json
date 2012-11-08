@@ -1,55 +1,55 @@
 {
-    "author" : {
-        "email" : "rob.schieber@gmail.com",
-        "name" : "Rob Schieber",
-        "url" : "https://twitter.com/sheebz"
-    },
-    "bugs" : {
-        "mail" : "rob.schieber@gmail.com",
-        "url" : " https://github.com/sheebz/phantom-proxy/issues"
-    },
-    "dependencies" : {
-        "colors" : "~0.6.0-1",
-        "form-data" : "~0.0.3",
-        "mime" : "~1.2.7",
-        "q" : "~0.8.8",
-        "underscore" : "~1.4.0"
-    },
-    "description" : "a lightweight proxy that lets you to drive phantomjs from node.",
-    "devDependencies" : {
-        "cucumber" : ">0.0.0",
-        "mocha" : "~1.5.0",
-        "should" : "~1.2.0",
-        "jshint" : "latest"
-    },
-    "directories" : {
-        "example" : "./example",
-        "lib" : "./lib",
-        "test" : "./test"
-    },
-    "engines" : {
-        "node" : ">0.6.0"
-    },
-    "keywords" : [
-            "phantomjs",
-            "phantom",
-            "cucumber",
-            "cucumberjs",
-            "feature",
-            "testing"
-    ],
-    "licenses" : [
-        {
-            "type" : "MIT",
-            "url" : "https://github.com/sheebz/phantom-proxy/blob/master/README.md"
-        }
-    ],
-    "main" : "index.js",
-    "name" : "phantom-proxy",
-    "private" : false,
-    "repository" : {
-        "type" : "git",
-        "url" : "https://github.com/sheebz/phantom-proxy"
-    },
-    "version" : "0.1.6"
+  "author": {
+    "email": "rob.schieber@gmail.com",
+    "name": "Rob Schieber",
+    "url": "https://twitter.com/sheebz"
+  },
+  "bugs": {
+    "mail": "rob.schieber@gmail.com",
+    "url": " https://github.com/sheebz/phantom-proxy/issues"
+  },
+  "dependencies": {
+    "colors": "~0.6.0-1",
+    "form-data": "~0.0.3",
+    "mime": "~1.2.7",
+    "q": "~0.8.8",
+    "underscore": "~1.4.0"
+  },
+  "description": "a lightweight proxy that lets you to drive phantomjs from node.",
+  "devDependencies": {
+    "cucumber": ">0.0.0",
+    "mocha": "~1.5.0",
+    "should": "~1.2.0",
+    "jshint": "latest"
+  },
+  "directories": {
+    "example": "./example",
+    "lib": "./lib",
+    "test": "./test"
+  },
+  "engines": {
+    "node": ">0.6.0"
+  },
+  "keywords": [
+    "phantomjs",
+    "phantom",
+    "cucumber",
+    "cucumberjs",
+    "feature",
+    "testing"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/sheebz/phantom-proxy/blob/master/README.md"
+    }
+  ],
+  "main": "index.js",
+  "name": "phantom-proxy",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sheebz/phantom-proxy"
+  },
+  "version": "0.1.61"
 }
