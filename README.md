@@ -53,7 +53,7 @@ Same example but, checking for a body tag and rendering a snapshot.
 See the [API](https://github.com/sheebz/phantom-proxy/blob/master/api.md) documentation for more usage information.
 
 ## Revision History
-* 2012-11-06 - version 0.1.5
+* 2012-11-06 - version 0.1.6
  - reworked event communication interface - no longer using stdoutput to pass event messages
  - reworked process creation and exit logic
 * 2012-11-03 - version 0.1.3
