@@ -15,7 +15,9 @@ PhantomJs is an incredibly useful tool for functional and unit testing.  Phantom
 
 ## Usage
 ### Examples
-Navigate to web page and check for body page
+See the [API](https://github.com/sheebz/phantom-proxy/blob/master/api.md) documentation for more usage information.
+
+#### wait for a specific selector to appear
 ```javascript
 var phantomProxy = require('phantom-proxy');
 
@@ -31,31 +33,61 @@ phantomProxy.create({}, function (proxy) {
 });
 ```
 
-Same example but, checking for a body tag and rendering a snapshot.
+#### render a screenshot
 ```javascript
-            phantomProxy.create({"debug":true}, function (proxy) {
-                proxy.page.open('http://www.w3.org', function (result) {
-                    assert.equal(result, true);
-                    proxy.page.waitForSelector('body', function (result) {
-                        assert.equal(result, true);
-                        proxy.page.render('./scratch/scratch.png', function (result) {
-                            assert.equal(result, true);
-                            proxy.end(function () {
-                              console.log('done');
-                            });
-                        });
-                    }, 1000);
+phantomProxy.create({"debug":true}, function (proxy) {
+    proxy.page.open('http://www.w3.org', function (result) {
+        assert.equal(result, true);
+        proxy.page.waitForSelector('body', function (result) {
+            assert.equal(result, true);
+            proxy.page.render('./scratch/scratch.png', function (result) {
+                assert.equal(result, true);
+                proxy.end(function () {
+                  console.log('done');
                 });
             });
-            ```
+        }, 1000);
+    });
+});
+            
+```
+
+#### subscribe to events - see api docs for complete list
+```javascript
+phantomProxy.create({"debug":true}, function (proxy) {
+    self.proxy.page.on('navigationRequested', function (url) {
+      console.log('at %s', url);
+      
+      if (url === 'http://www.w3.org') {
+        console.log('at w3.org');
+      }
+      else {
+        console.log('how did we get here?');
+      }
+    });
+    proxy.page.open('http://www.w3.org', function (result) {
+      proxy.page.on('alert', function (msg) {
+          if (msg.trim() === 'hello') {
+              console.log('it said hello');
+          }
+      });
 
 
-See the [API](https://github.com/sheebz/phantom-proxy/blob/master/api.md) documentation for more usage information.
+      proxy.end(function () {
+        console.log('done');
+      });
+    });
+});
+            
+```
+
+
 
 ## Revision History
 * 2012-11-06 - version 0.1.6
  - reworked event communication interface - no longer using stdoutput to pass event messages
- - reworked process creation and exit logic
+ - reworked process creation and exit logic 
+ - startup time and event latency are much improved - should run much faster than before
 * 2012-11-03 - version 0.1.3
   - added callback parameter to end method on proxy.
   - removed unref call in proxy
