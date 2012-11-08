@@ -7,7 +7,7 @@ describe('webpage', function () {
     describe('#open', function () {
         it('should return true', function (done) {
             this.timeout(0);
-            phantomProxy.create({"debug":true}, function (proxy) {
+            phantomProxy.create({"debug":false}, function (proxy) {
                 proxy.page.open('http://www.w3.org', function (result) {
                     assert.equal(result, true);
                     describe('#waitForSelector', function () {
