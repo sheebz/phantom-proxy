@@ -7,13 +7,13 @@ describe('webpage', function () {
     describe('#open', function () {
         it('should return true', function (done) {
             this.timeout(0);
-            phantomProxy.create({"debug":false}, function (proxy) {
+            phantomProxy.create({"debug":true}, function (proxy) {
                 proxy.page.open('http://www.w3.org', function (result) {
                     assert.equal(result, true);
+
                     describe('#waitForSelector', function () {
                         proxy.page.waitForSelector('body', function (result) {
                             assert.equal(result, true);
-
                             describe('#render', function () {
                                 proxy.page.render('./scratch/scratch.png', function (result) {
                                     assert.equal(result, true);
