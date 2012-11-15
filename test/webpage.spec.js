@@ -131,24 +131,103 @@ describe('page', function () {
                 }, 2, 2);
             });
         });
-
-        it('should render', function (done) {
-
+    });
+    it('should render', function (done) {
+        this.timeout(10000);
+        phantomProxy.create({"debug":true}, function (proxy) {
+            should.exist(proxy.page);
+            proxy.page.open('http://www.cnn.com', function (result) {
+                assert.equal(true, result);
+                proxy.page.render('./scratch/cnn.png', function (result) {
+                    assert.equal(true, result);
+                    proxy.end(function (result) {
+                        done();
+                    });
+                });
+            });
         });
-
-        it('should renderBase64', function (done) {
-
+    });
+    it('should renderBase64', function (done) {
+        this.timeout(10000);
+        phantomProxy.create({"debug":true}, function (proxy) {
+            should.exist(proxy.page);
+            proxy.page.open('http://www.w3.org', function (result) {
+                assert.equal(true, result);
+                proxy.page.renderBase64('PNG', function (result) {
+                    console.log(result.green.bold);
+                    should.exist(result);
+                    proxy.end(function (result) {
+                        done();
+                    });
+                });
+            });
         });
-
-        it('should sendEvent', function (done) {
-
-        });
-        it('should includeJs', function (done) {
-
-        });
-
     });
 
+    it('should send mouse events', function (done) {
+        this.timeout(10000);
+        phantomProxy.create({"debug":true}, function (proxy) {
+            should.exist(proxy.page);
+            proxy.page.open('http://www.w3.org', function (result) {
+                assert.equal(true, result);
+                proxy.page.sendEvent({event:'click', mouseX:0, mouseY:1, button:'left'}, function (result) {
+                    console.log(result.green);
+                    should.exist(result);
+                    proxy.end(function (result) {
+                        done();
+                    });
+                });
+            });
+        });
+    });
+    it('should send keyboard events', function (done) {
+        this.timeout(10000);
+        phantomProxy.create({"debug":true}, function (proxy) {
+            should.exist(proxy.page);
+            proxy.page.open('http://www.w3.org', function (result) {
+                assert.equal(true, result);
+                proxy.page.sendEvent({event:'keypress',keys:16777221}, function (result) {
+                    console.log(result.green);
+                    should.exist(result);
+                    proxy.end(function (result) {
+                        done();
+                    });
+                });
+            });
+        });
+    });
+    it('should send click events', function (done) {
+        this.timeout(10000);
+        phantomProxy.create({"debug":true}, function (proxy) {
+            should.exist(proxy.page);
+            proxy.page.open('http://www.w3.org', function (result) {
+                assert.equal(true, result);
+                proxy.page.sendEvent({event:'click'}, function (result) {
+                    console.log(result.green);
+                    should.exist(result);
+                    proxy.end(function (result) {
+                        done();
+                    });
+                });
+            });
+        });
+    });
+    it('should includeJs', function (done) {
+        this.timeout(10000);
+        phantomProxy.create({"debug":true}, function (proxy) {
+            should.exist(proxy.page);
+            proxy.page.open('http://www.w3.org', function (result) {
+                assert.equal(true, result);
+                proxy.page.includeJs('http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js', function (result) {
+                    console.log(result.green);
+                    should.exist(result);
+                    proxy.end(function (result) {
+                        done();
+                    });
+                });
+            });
+        });
+    });
 //    it('should close', function (done) {
 //        phantomProxy.create({"debug":true}, function (proxy) {
 //            should.exist(proxy.page);
