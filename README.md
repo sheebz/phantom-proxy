@@ -49,7 +49,7 @@ phantomProxy.create({"debug":true}, function (proxy) {
         }, 1000);
     });
 });
-            
+
 ```
 
 #### subscribe to events - see api docs for complete list
@@ -57,25 +57,25 @@ phantomProxy.create({"debug":true}, function (proxy) {
 phantomProxy.create({"debug":true}, function (proxy) {
     self.proxy.page.on('navigationRequested', function (url) {
       console.log('at %s', url);
-      
+
       if (url === 'http://www.w3.org') {
         console.log('at w3.org');
       }
       else {
         console.log('how did we get here?');
       }
-      
+
       proxy.end(function () {
         console.log('done');
       });
     });
-    
+
     proxy.page.open('http://www.w3.org', function (result) {
       proxy.page.on('alert', function (msg) {
           if (msg.trim() === 'hello') {
               console.log('it said hello');
           }
-          
+
         proxy.end(function () {
           console.log('done');
         });
@@ -85,7 +85,7 @@ phantomProxy.create({"debug":true}, function (proxy) {
 
     });
 });
-            
+
 ```
 # API Documentation
 ## phantomProxy object
@@ -259,8 +259,10 @@ phantomProxy.create({}, function (proxy) {
 
 ## Revision History
 * 2012-11-06 - version 0.1.6
+ - reworked event communication interface to use socket.io - no longer using filesyste to pass event messages, should help with dropped msgs
+* 2012-11-06 - version 0.1.6
  - reworked event communication interface - no longer using stdoutput to pass event messages
- - reworked process creation and exit logic 
+ - reworked process creation and exit logic
  - startup time and event latency are much improved - should run much faster than before
 * 2012-11-03 - version 0.1.3
   - added callback parameter to end method on proxy.

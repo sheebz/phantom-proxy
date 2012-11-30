@@ -7,7 +7,7 @@ var should = require("should"),
 describe('page', function () {
     describe('#addCookie', function () {
         it('should return true', function (done) {
-            this.timeout(10000);
+            this.timeout(0);
             phantomProxy.create({"debug":true}, function (proxy) {
                 should.exist(proxy.page);
                 proxy.page.addCookie({
@@ -133,10 +133,10 @@ describe('page', function () {
         });
     });
     it('should render', function (done) {
-        this.timeout(10000);
+        this.timeout(0);
         phantomProxy.create({"debug":true}, function (proxy) {
             should.exist(proxy.page);
-            proxy.page.open('http://www.cnn.com', function (result) {
+            proxy.page.open('http://www.w3.org', function (result) {
                 assert.equal(true, result);
                 proxy.page.render('./scratch/cnn.png', function (result) {
                     assert.equal(true, result);
@@ -148,7 +148,7 @@ describe('page', function () {
         });
     });
     it('should renderBase64', function (done) {
-        this.timeout(10000);
+        this.timeout(0);
         phantomProxy.create({"debug":true}, function (proxy) {
             should.exist(proxy.page);
             proxy.page.open('http://www.w3.org', function (result) {
@@ -165,7 +165,7 @@ describe('page', function () {
     });
 
     it('should send mouse events', function (done) {
-        this.timeout(10000);
+        this.timeout(0);
         phantomProxy.create({"debug":true}, function (proxy) {
             should.exist(proxy.page);
             proxy.page.open('http://www.w3.org', function (result) {
@@ -181,7 +181,7 @@ describe('page', function () {
         });
     });
     it('should send keyboard events', function (done) {
-        this.timeout(10000);
+        this.timeout(0);
         phantomProxy.create({"debug":true}, function (proxy) {
             should.exist(proxy.page);
             proxy.page.open('http://www.w3.org', function (result) {
@@ -197,7 +197,7 @@ describe('page', function () {
         });
     });
     it('should send click events', function (done) {
-        this.timeout(10000);
+        this.timeout(0);
         phantomProxy.create({"debug":true}, function (proxy) {
             should.exist(proxy.page);
             proxy.page.open('http://www.w3.org', function (result) {
@@ -213,7 +213,7 @@ describe('page', function () {
         });
     });
     it('should includeJs', function (done) {
-        this.timeout(10000);
+        this.timeout(0);
         phantomProxy.create({"debug":true}, function (proxy) {
             should.exist(proxy.page);
             proxy.page.open('http://www.w3.org', function (result) {
