@@ -15,7 +15,8 @@
         "q":"~0.8.8",
         "underscore":"~1.4.0",
         "express":" ~3.0.3",
-        "socket.io":"~0.9.11"
+        "socket.io":"~0.9.11",
+        "event-stream": "~3.0.10"
     },
     "description":"a lightweight proxy that lets you to drive phantomjs from node.",
     "devDependencies":{
