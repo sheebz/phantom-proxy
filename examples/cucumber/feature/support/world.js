@@ -68,12 +68,12 @@ var World = function World(worldCallback) {
                 proxy.page.on('prompt', function (msg, defaultVal) {
                     console.log('PROMPT: %s'.info.bold, msg);
                 });
-//                proxy.page.on('resourceRequested', function (resource) {
-//                    console.log('resource requested: %s'.data, resource.url);
-//                });
-//                proxy.page.on('resourceReceived', function (response) {
-//                    console.log('resource received: %s'.data, response.url);
-//                });
+                proxy.page.on('resourceRequested', function (resource) {
+                    console.log('resource requested: %s'.data, resource.url);
+                });
+                proxy.page.on('resourceReceived', function (response) {
+                    console.log('resource received: %s'.data, response.url);
+                });
                 proxy.page.on('urlChanged', function (targetUrl) {
                     console.log('url changed: %s'.info, JSON.stringify(targetUrl));
                 });
