@@ -180,6 +180,22 @@ describe('page', function () {
             });
         });
     });
+    it('should send mouse events that are not falsey', function (done) {
+        this.timeout(0);
+        phantomProxy.create({"debug":true}, function (proxy) {
+            should.exist(proxy.page);
+            proxy.page.open('http://www.w3.org', function (result) {
+                assert.equal(true, result);
+                proxy.page.sendEvent({event:'click', mouseX:1, mouseY:1, button:'left'}, function (result) {
+                    console.log(result.green);
+                    should.exist(result);
+                    proxy.end(function (result) {
+                        done();
+                    });
+                });
+            });
+        });
+    });
     it('should send keyboard events', function (done) {
         this.timeout(0);
         phantomProxy.create({"debug":true}, function (proxy) {
