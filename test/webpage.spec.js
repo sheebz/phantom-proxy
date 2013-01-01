@@ -228,6 +228,29 @@ describe('page', function () {
             });
         });
     });
+
+    it('should injectJs', function (done) {
+        this.timeout(0);
+        phantomProxy.create({"debug":true}, function (proxy) {
+            should.exist(proxy.page);
+            proxy.page.open('http://www.w3.org', function (result) {
+                assert.equal(true, result);
+                proxy.page.injectJs(__dirname + '/resources/include.js', function (result) {
+                    console.log(result.green);
+                    proxy.page.on('consoleMessage', function(msg) {
+                        assert.equal(msg, 'true');
+                        proxy.end(function (result) {
+                            done();
+                        });
+                    });
+                    proxy.page.evaluate(function() {
+                        console.log(window.includedByPhantom);
+                    });
+                });
+            });
+        });
+    });
+
 //    it('should close', function (done) {
 //        phantomProxy.create({"debug":true}, function (proxy) {
 //            should.exist(proxy.page);
@@ -240,7 +263,6 @@ describe('page', function () {
 //    });
 });
 
-//    //TODO:need injectJS test
 //    describe('#exit', function () {
 //        it('should return true', function (done) {
 //            phantomProxy.create({"debug":true}, function (proxy) {
