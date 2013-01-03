@@ -132,6 +132,30 @@ describe('page', function () {
             });
         });
     });
+    describe('#settings', function () {
+        describe('#useragent', function () {
+            it('should set useragent', function (done) {
+                phantomProxy.create({"debug":true}, function (proxy) {
+                    should.exist(proxy.page);
+                    proxy.page.settings.set('userAgent', 'iPad', function (result) {
+                        assert.equal(result, true);
+                        done();
+                    });
+                });
+            });
+            it('should get useragent', function (done) {
+                phantomProxy.create({"debug":true}, function (proxy) {
+                    should.exist(proxy.page);
+                    proxy.page.settings.set('userAgent', 'iPad', function (result) {
+                        proxy.page.settings.get('userAgent', function (result) {
+                            assert.equal(result, 'iPad');
+                            done();
+                        });
+                    });
+                });
+            });
+        });
+    });
     it('should render', function (done) {
         this.timeout(0);
         phantomProxy.create({"debug":true}, function (proxy) {
