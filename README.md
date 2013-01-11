@@ -138,19 +138,6 @@ The phantom object corresponds to the phantom object in the native phantomJs API
 ## Page Object
 The page object corresponds to the webpage object in the native phantomJs API.
 
-### set(propertyName, propertyValue, callbackFn)
-sets property on page object
-
-```javascript
-  //set viewport size for browser window
-  proxy.page.set('viewportSize', { width:320, height:480 }, function (result) {
-      console.log(result.toString());
-  });
-```
-
-### get(propertyName, callbackFn)
-gets property on page object
-
 ### settings.set(propertyName, propertyValue, callbackFn)
 sets setting on page object
 
@@ -160,7 +147,7 @@ sets setting on page object
   });
 ```
 
-### settings.set(propertyName, callbackFn)
+### settings.get(propertyName, callbackFn)
 gets a setting on page object
 
 ```javascript
