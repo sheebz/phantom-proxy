@@ -160,7 +160,7 @@ sets setting on page object
   });
 ```
 
-### settings.set(propertyName, callbackFn)
+### settings.get(propertyName, callbackFn)
 gets a setting on page object
 
 ```javascript
