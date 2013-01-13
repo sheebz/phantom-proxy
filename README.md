@@ -254,7 +254,7 @@ The following events are supported, see [PhantomJs Docs](https://github.com/ariy
 <tr><td>initialized</td><td></td></tr>
 <tr><td>error</td><td></td></tr>
 <tr><td>consoleMessage</td><td></td></tr>
-<tr><td>confirm</td><td>Event will fire, but callback will not execute in phantomjs context</td></tr>
+<tr><td>confirm</td><td>See onConfirmCallback for handling this event</td></tr>
 <tr><td>closing</td><td></td></tr>
 <tr><td>callback</td><td></td></tr>
 <tr><td>alert</td><td></td></tr>
@@ -273,8 +273,16 @@ phantomProxy.create({}, function (proxy) {
 });
 ```
 
+#### Special events
 
+Some phantomjs functions allow you to return a value to drive phantom interaction. Currently, onConfirm is supported. To register a callback function for intercepting confirm dialogs, use onConfirmCallback:
 
+```javascript
+// return true corresponds to accepting confirm, return false is denying
+proxy.page.set('onConfirmCallback', function(msg) { return true; });
+```
+
+Pre-registering a confirm function can be useful if you encounter a page that prompts you when you try to leave. Without registering a function that returns true, phantomjs will hang. Please note you can still listen for the 'confirm' event in conjunction with this special handler.
 
 ## Revision History
 * 2012-11-06 - version 0.1.6
