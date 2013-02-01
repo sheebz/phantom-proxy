@@ -55,7 +55,7 @@ phantomProxy.create({"debug":true}, function (proxy) {
 #### subscribe to events - see api docs for complete list
 ```javascript
 phantomProxy.create({"debug":true}, function (proxy) {
-    self.proxy.page.on('navigationRequested', function (url) {
+    proxy.page.on('navigationRequested', function (url) {
       console.log('at %s', url);
 
       if (url === 'http://www.w3.org') {
