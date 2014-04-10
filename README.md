@@ -1,5 +1,5 @@
 # phantom-proxy
-* Allows you to drive [phantomjs](www.phantomjs.org) from [node](www.nodejs.org)
+* Allows you to drive [phantomjs](http://www.phantomjs.org) from [node](http://www.nodejs.org)
 * Does not rely on alert side effects for communicating with phantomjs
 * Uses Phantom's embedded mongoose web server for communication - more efficient, simpler, faster.
 * Provides a full api - including a parametrized evaluate function - no more hard coded strings
