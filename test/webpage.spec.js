@@ -291,6 +291,24 @@ describe('page', function () {
         });
     });
 
+    describe('#evaluate', function(){
+        it('should return simple (JSON serializable) objects', function (done) {
+            phantomProxy.create({"debug":true}, function (proxy) {
+                var a = 'A', b = 4, c = [0,1,2], d = {e: 'e'};
+                should.exist(proxy.page);
+                proxy.page.evaluate(function (a, b, c, d) {
+                    return {a: a, b: b, c: c, d: d};
+                }, function (result) {
+                    a.should.equal(result.a);
+                    b.should.equal(result.b);
+                    c.should.eql(result.c);
+                    d.should.eql(result.d);
+                    done();
+                }, a, b, c, d);
+            });
+        })
+    });
+
 //    it('should close', function (done) {
 //        phantomProxy.create({"debug":true}, function (proxy) {
 //            should.exist(proxy.page);
