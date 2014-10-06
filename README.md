@@ -26,16 +26,19 @@ phantomProxy.create({}, function (proxy) {
     page.open('http://www.w3.org', function () {
         page.waitForSelector('body', function () {
             console.log('body tag present');
-            proxy.end();
+            proxy.end(function () {
+                console.log('done');
+            });
         });
     });
-
 });
 ```
 
 #### render a screenshot
 ```javascript
-phantomProxy.create({"debug":true}, function (proxy) {
+var phantomProxy = require('phantom-proxy');
+
+phantomProxy.create({'debug': true}, function (proxy) {
     proxy.page.open('http://www.w3.org', function (result) {
         assert.equal(result, true);
         proxy.page.waitForSelector('body', function (result) {
@@ -43,7 +46,7 @@ phantomProxy.create({"debug":true}, function (proxy) {
             proxy.page.render('./scratch/scratch.png', function (result) {
                 assert.equal(result, true);
                 proxy.end(function () {
-                  console.log('done');
+                    console.log('done');
                 });
             });
         }, 1000);
@@ -54,35 +57,34 @@ phantomProxy.create({"debug":true}, function (proxy) {
 
 #### subscribe to events - see api docs for complete list
 ```javascript
-phantomProxy.create({"debug":true}, function (proxy) {
-    self.proxy.page.on('navigationRequested', function (url) {
-      console.log('at %s', url);
+var phantomProxy = require('phantom-proxy');
 
-      if (url === 'http://www.w3.org') {
-        console.log('at w3.org');
-      }
-      else {
-        console.log('how did we get here?');
-      }
+phantomProxy.create({'debug': true}, function (proxy) {
+    this.proxy.page.on('navigationRequested', function (url) {
+        console.log('at %s', url);
 
-      proxy.end(function () {
-        console.log('done');
-      });
+        if (url === 'http://www.w3.org') {
+            console.log('at w3.org');
+        }
+        else {
+            console.log('how did we get here?');
+        }
+
+        proxy.end(function () {
+            console.log('done');
+        });
     });
 
     proxy.page.open('http://www.w3.org', function (result) {
-      proxy.page.on('alert', function (msg) {
-          if (msg.trim() === 'hello') {
-              console.log('it said hello');
-          }
+        proxy.page.on('alert', function (msg) {
+            if (msg.trim() === 'hello') {
+                console.log('it said hello');
+            }
 
-        proxy.end(function () {
-          console.log('done');
+            proxy.end(function () {
+                console.log('done');
+            });
         });
-      });
-
-
-
     });
 });
 
